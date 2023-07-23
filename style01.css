@@ -1,0 +1,73 @@
+﻿body {
+    background: #1d2630;
+}
+
+a.active{
+    background-color: green;
+}
+
+a.deactive{
+    background-color: red;
+}
+
+#Update{
+    display: none;
+}
+
+.calculator{
+    background: #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+    .calculator form input {
+        border: 0;
+        outline: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0, 0, 0, 0.2);
+        background: transparent;
+        font-size: 15px;
+        color: #fff;
+        cursor: pointer;
+        margin: 3px;
+    }
+
+.cal .display{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+.cal .display input{
+    text-align: right;
+    flex: 1;
+    font-size: 25px;
+    box-shadow: none;
+}
+
+form input.equal{
+    width: 95px;
+
+}
+
+form input.operator{
+    color: #33ffd8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

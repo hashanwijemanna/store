@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Wijemanna Stores</title>
+    <link rel="shortcut icon" href="images\logo.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="style01.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+
+    <!-- Sidebar (hidden by default) -->
+    <div class="navigationbar">
+        <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+            <a href="index.html" onclick="w3_close()"
+               class="w3-bar-item w3-button active"><img src="images\logo.png" alt="logo" width="45" height="45">&nbsp&nbspගිණුම් තැබීම</a>
+            <a href="inventory.html" onclick="w3_close()" class="w3-bar-item w3-button">දැනට පවතින භාණ්ඩ</a>
+            <a href="history.html" onclick="w3_close()" class="w3-bar-item w3-button">පැරණි ගනුදෙනු</a>
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button deactive"><center><font color="white"><b>Close Menu</b></font></center></a>
+            <br />
+            <div class="cont">
+                <div class="calculator">
+                    <form class="cal">
+                        <div class="display">
+                            <input type="text" name="display" />
+                        </div>
+                        <div>
+                            <input type="button" value="AC" onclick="display.value = '' " class="operator"/>
+                            <input type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1)" class="operator"/>
+                            <input type="button" value="." onclick="display.value += '.' " class="operator"/>
+                            <input type="button" value="/" onclick="display.value += '/' " class="operator"/>
+                        </div>
+                        <div>
+                            <input type="button" value="7" onclick="display.value += '7' "/>
+                            <input type="button" value="8" onclick="display.value += '8' "/>
+                            <input type="button" value="9" onclick="display.value += '9' "/>
+                            <input type="button" value="*" onclick="display.value += '*' "/>
+                        </div>
+                        <div>
+                            <input type="button" value="4" onclick="display.value += '4' "/>
+                            <input type="button" value="5" onclick="display.value += '5' "/>
+                            <input type="button" value="6" onclick="display.value += '6' "/>
+                            <input type="button" value="-" onclick="display.value += '-' "/>
+                        </div>
+                        <div>
+                            <input type="button" value="1" onclick="display.value += '1' "/>
+                            <input type="button" value="2" onclick="display.value += '2' "/>
+                            <input type="button" value="3" onclick="display.value += '3' "/>
+                            <input type="button" value="+" onclick="display.value += '+' "/>
+                        </div>
+                        <div>
+                            <input type="button" value="00" onclick="display.value += '00' "/>
+                            <input type="button" value="0" onclick="display.value += '0' "/>
+                            <input type="button" value="=" class="equal" onclick="display.value = eval(display.value) "/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Top menu -->
+    <div class="w3-top">
+        <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+            <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+            <div class="w3-right w3-padding-16"><img src="images\logo.png" alt="logo" width="50" height="50"></div>
+            <div class="w3-center w3-padding-16"><b><font color=black>Wijemanna Stores</font></b></div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <h2 class="mt-5 mb-5"><br /><center><font color="white"><u>Billing System</u></font></center></h2>
+        <div class="mb-5">
+            <div class="row">
+                <div class="form-group col-md-6mb-3">
+                    <label for="name"><font color="white">Product</font></label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter Product Name" />
+                </div><br />
+                <div class="form-group col-md-6mb-3">
+                    <label for="age"><font color="white">Price: LKR</font></label>
+                    <input type="number" step="0.01" name="age" class="form-control" id="age" placeholder="Enter Price" />
+                </div>
+                <div class="col-lg-12 mt-5">
+                    <button class="btn btn-success" id="Submit" onclick="AddData()">Add to Bill</button>
+                    <button class="btn btn-danger" id="Invoice" onclick="updateSum()">Make Invoice</button>
+                    <button class="btn btn-warning" id="Clear" onclick="clearLocalStorageData()"><font color="white">Clear</font></button>
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <div class="row mt-5">
+            <div class="col-12" style="overflow-x:auto;">
+                <table class="table table-bordered" id="crudTable">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th id="countable">Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+        <divS class="sum"></divS>
+
+    </div>
+
+    <br /><br />
+    <script src="script01.js"></script>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+
+    
+</body>
+
+<footer class="w3-row-padding w3-padding-32">
+    <font color="white">
+        <div class="w3-third">
+            <h3>FOOTER</h3>
+            <p>Powered by <a href="https://hashanwijemanna.github.io/Official-Page/index.html">Hashan Wijemanna</a>.</p>
+            <p>© 2023 Wijemanna Stores. All rights reserved.</p>
+        </div>
+    </font>
+
+</footer>
+</html>
